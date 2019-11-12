@@ -1,0 +1,17 @@
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container" *ngIf="product">
+     <h1 class="display-5">Product Details</h1>
+     <p class="lead">{{ product.name }}</p>
+     <p class="lead"> {{ product.price | currency }}</p>
+     <p class="lead"> {{ product.description }} </p>
+  </div>
+  
+  <button (click)="share()"type="button" class="btn btn-danger">Share</button>
+  <app-product-alerts
+    [product]="product" 
+    (notify)="onNotify()">
+  </app-product-alerts>
+  <button (click)="addToCart(product)"type="button" class="btn btn-success">Buy</button>
+ 
+</div>
