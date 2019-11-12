@@ -1,46 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductAlertsComponent } from './product-alerts/product-alerts.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CartComponent } from './cart/cart.component';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { WeatherComponent } from './weather/weather.component';
 
+import {RouterModule} from '@angular/router';
+import {allAppRoutes} from './routes';
+import { HttpClientModule } from '@angular/common/http';
+import { ApixuService } from "./apixu.service";
 @NgModule({
   declarations: [
     AppComponent,
-    TopBarComponent,
-    ProductListComponent,
-    ProductAlertsComponent,
-    ProductDetailsComponent,
-    CartComponent,
- 
-   
+    WeatherComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([
-      {path: 'products',component:ProductDetailsComponent},
-      { path: 'products/:productId', component: ProductDetailsComponent },
-      { path: 'cart',component:CartComponent },
-    
-
-    ])
-
-    ],
-    
-  providers: [],
+    HttpClientModule,
+    RouterModule.forRoot(allAppRoutes)
+  ],
+  providers: [ApixuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
